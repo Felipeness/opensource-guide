@@ -118,6 +118,53 @@ export const ORG_SHORTCUTS = [
   { value: "sveltejs", label: "Svelte" },
 ] as const satisfies readonly Option[];
 
+export const POPULAR_REPOS = [
+  { value: "facebook/react", label: "React" },
+  { value: "microsoft/vscode", label: "VS Code" },
+  { value: "vercel/next.js", label: "Next.js" },
+  { value: "flutter/flutter", label: "Flutter" },
+  { value: "freeCodeCamp/freeCodeCamp", label: "freeCodeCamp" },
+  { value: "godotengine/godot", label: "Godot" },
+  { value: "appwrite/appwrite", label: "Appwrite" },
+  { value: "supabase/supabase", label: "Supabase" },
+  { value: "nodejs/node", label: "Node.js" },
+  { value: "denoland/deno", label: "Deno" },
+  { value: "sveltejs/svelte", label: "Svelte" },
+  { value: "angular/angular", label: "Angular" },
+] as const satisfies readonly Option[];
+
+type PresetId = "trending" | "fresh" | "popular";
+
+export type FilterValues = {
+  readonly [K in keyof typeof DEFAULT_FILTERS]: (typeof DEFAULT_FILTERS)[K] extends boolean
+    ? boolean
+    : string;
+};
+
+type FilterPreset = {
+  readonly id: PresetId;
+  readonly icon: string;
+  readonly filters: Partial<FilterValues>;
+};
+
+export const FILTER_PRESETS: readonly FilterPreset[] = [
+  {
+    id: "trending",
+    icon: "🔥",
+    filters: { sort: "reactions", date: "7", stars: "500", label: "good first issue" },
+  },
+  {
+    id: "fresh",
+    icon: "🌱",
+    filters: { sort: "created", date: "7", stars: "100", noAssignee: true, noComments: true, label: "good first issue" },
+  },
+  {
+    id: "popular",
+    icon: "⭐",
+    filters: { stars: "5000", sort: "updated", date: "", label: "good first issue" },
+  },
+] as const;
+
 export const STARS_OPTIONS = [
   { value: "", label: "starsAny" },
   { value: "10", label: "10+" },

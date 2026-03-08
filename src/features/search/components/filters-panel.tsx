@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import { useGitHubSearch } from "../hooks/use-github-search";
 import type { QueryFilters, SearchError } from "../types";
 import { DEFAULT_FILTERS } from "@/lib/constants";
+import type { FilterValues } from "@/lib/constants";
 import { SearchBar } from "./search-bar";
 import { LanguageChips } from "./language-chips";
 import { LabelFilters } from "./label-filters";
@@ -13,6 +14,7 @@ import { SelectFilters } from "./select-filters";
 import { TextFilters } from "./text-filters";
 import { CheckboxFilters } from "./checkbox-filters";
 import { ActiveFilterTags } from "./active-filter-tags";
+import { FilterPresets } from "./filter-presets";
 import { ResultsHeader } from "@/features/issues/components/results-header";
 import { IssuesGrid } from "@/features/issues/components/issues-grid";
 import { LoadingState } from "@/features/issues/components/loading-state";
@@ -114,6 +116,13 @@ export function FiltersPanel() {
     [setFilters],
   );
 
+  const handleApplyPreset = useCallback(
+    (presetFilters: Partial<FilterValues>) => {
+      setFilters(presetFilters);
+    },
+    [setFilters],
+  );
+
   const handleClear = useCallback(() => {
     setFilters({
       search: DEFAULT_FILTERS.search,
@@ -207,6 +216,8 @@ export function FiltersPanel() {
           onChange={(v) => setFilters({ search: v })}
           onSubmit={() => {}}
         />
+
+        <FilterPresets onApply={handleApplyPreset} />
 
         <LanguageChips
           active={filters.language}

@@ -3,7 +3,7 @@
 import { Input } from "@/components/ui/input";
 import { Chip } from "@/components/ui/chip";
 import { useTranslations } from "next-intl";
-import { ORG_SHORTCUTS } from "@/lib/constants";
+import { ORG_SHORTCUTS, POPULAR_REPOS } from "@/lib/constants";
 
 type TextValues = {
   org: string;
@@ -47,7 +47,7 @@ export function TextFilters({ values, onChange }: TextFiltersProps) {
 
       <div className="flex items-center gap-2.5 flex-wrap max-md:flex-col max-md:items-start">
         <span className="text-[#8b949e] text-xs font-medium">
-          {t("shortcutsLabel")}
+          {t("orgShortcuts")}
         </span>
         <div className="flex gap-1.5 flex-wrap">
           {ORG_SHORTCUTS.map((shortcut) => (
@@ -63,6 +63,29 @@ export function TextFilters({ values, onChange }: TextFiltersProps) {
               }
             >
               {shortcut.label}
+            </Chip>
+          ))}
+        </div>
+      </div>
+
+      <div className="flex items-center gap-2.5 flex-wrap max-md:flex-col max-md:items-start">
+        <span className="text-[#8b949e] text-xs font-medium">
+          {t("repoShortcuts")}
+        </span>
+        <div className="flex gap-1.5 flex-wrap">
+          {POPULAR_REPOS.map((repo) => (
+            <Chip
+              key={repo.value}
+              size="sm"
+              active={values.repo === repo.value}
+              onClick={() =>
+                onChange(
+                  "repo",
+                  values.repo === repo.value ? "" : repo.value,
+                )
+              }
+            >
+              {repo.label}
             </Chip>
           ))}
         </div>
