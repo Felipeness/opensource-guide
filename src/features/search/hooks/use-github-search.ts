@@ -196,7 +196,11 @@ export function useGitHubSearch({
           dispatch({ type: "SET_RATE_LIMIT", rateLimit });
         }
 
-        dispatch({ type: "FETCH_SUCCESS", issues, totalCount, append });
+        const filteredIssues = filters.hasBody
+          ? issues.filter((issue) => issue.body && issue.body.trim().length > 20)
+          : issues;
+
+        dispatch({ type: "FETCH_SUCCESS", issues: filteredIssues, totalCount, append });
       });
     },
     [filters, sort, perPage],
@@ -221,7 +225,8 @@ export function useGitHubSearch({
       prev.dateDays !== filters.dateDays ||
       prev.noAssignee !== filters.noAssignee ||
       prev.noComments !== filters.noComments ||
-      prev.noPr !== filters.noPr;
+      prev.noPr !== filters.noPr ||
+      prev.hasBody !== filters.hasBody;
 
     if (debounceRef.current) {
       clearTimeout(debounceRef.current);
@@ -242,8 +247,8 @@ export function useGitHubSearch({
       return;
     }
 
-    // Initial mount (prev === filters on first render via ref initialization)
-    if (prev === filters) {
+    // Initial mount or sort/perPage changed (executeSearch changed but no filter field changed)
+    if (!textChanged && !nonTextChanged) {
       executeSearch(1, false);
     }
 

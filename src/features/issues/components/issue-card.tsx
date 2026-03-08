@@ -32,12 +32,12 @@ export function IssueCard({ issue }: IssueCardProps) {
     now: t("timeAgo.now"),
   };
 
-  const bodyPreview = issue.body
-    ? issue.body
-        .replace(/[#*`>\-[\]()!]/g, "")
-        .trim()
-        .substring(0, 120) + (issue.body.length > 120 ? "..." : "")
+  const strippedBody = issue.body
+    ? issue.body.replace(/[#*`>\-[\]()!]/g, "").trim()
     : "";
+  const bodyPreview = strippedBody.length > 120
+    ? strippedBody.substring(0, 120) + "..."
+    : strippedBody;
 
   const avatarUrl = repo.owner
     ? `https://github.com/${repo.owner}.png?size=40`

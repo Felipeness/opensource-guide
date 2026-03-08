@@ -26,6 +26,7 @@ export type QueryFilters = {
   readonly noAssignee: boolean;
   readonly noComments: boolean;
   readonly noPr: boolean;
+  readonly hasBody: boolean;
 };
 
 export type TimeAgoTranslations = {

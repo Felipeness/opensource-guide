@@ -47,6 +47,7 @@ function toQueryFilters(filters: {
   noAssignee: boolean;
   noComments: boolean;
   noPr: boolean;
+  hasBody: boolean;
 }): QueryFilters {
   return {
     label: filters.label,
@@ -59,6 +60,7 @@ function toQueryFilters(filters: {
     noAssignee: filters.noAssignee,
     noComments: filters.noComments,
     noPr: filters.noPr,
+    hasBody: filters.hasBody,
   };
 }
 
