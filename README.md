@@ -1,22 +1,24 @@
 <div align="center">
 
-[![en](https://img.shields.io/badge/lang-English-blue)](README.en.md)
+<a href="README.en.md">🇺🇸 English</a>&nbsp;&nbsp;|&nbsp;&nbsp;🇧🇷 **Portugues**
+
+<br />
 
 # Open Source Guide
 
-**Encontre good first issues em projetos reais do GitHub.**
+Encontre good first issues em projetos reais do GitHub.
 
-[**Ver ao vivo**](https://felipeness.github.io/opensource-guide/)
+[**Ver ao vivo →**](https://felipeness.github.io/opensource-guide/)
 
 </div>
 
----
+<br />
 
-### O que e?
+## O que e?
 
 Uma ferramenta web para encontrar issues marcadas como "good first issue" no GitHub. Filtre por linguagem, label, popularidade, organizacao e mais — tudo em tempo real com a GitHub Search API.
 
-### Funcionalidades
+## Funcionalidades
 
 - **Filtros avancados** — linguagem, labels (iniciante/intermediario/avancado), stars, data, organizacao, repositorio
 - **Atalhos de organizacao** — Microsoft, Meta, Google, Vercel, Apache, Mozilla e mais com um clique
@@ -26,7 +28,7 @@ Uma ferramenta web para encontrar issues marcadas como "good first issue" no Git
 - **Bilingue** — interface em Portugues e Ingles
 - **Rate limit visivel** — acompanhe o uso da API em tempo real
 
-### Stack
+## Stack
 
 | Tecnologia | Uso |
 |---|---|
@@ -37,7 +39,7 @@ Uma ferramenta web para encontrar issues marcadas como "good first issue" no Git
 | [nuqs](https://nuqs.47ng.com) | Estado dos filtros sincronizado com a URL |
 | [Zod](https://zod.dev) | Validacao da resposta da API |
 
-### Rodando localmente
+## Rodando localmente
 
 ```bash
 git clone https://github.com/Felipeness/opensource-guide.git
@@ -48,7 +50,7 @@ npm run dev
 
 Acesse `http://localhost:3000`.
 
-### Aumentando o rate limit
+## Aumentando o rate limit
 
 Sem autenticacao a GitHub Search API permite 10 buscas/min. Para aumentar para 30/min, crie um token e configure:
 
@@ -59,7 +61,7 @@ GITHUB_TOKEN=ghp_seu_token_aqui
 
 Gere o token em **GitHub > Settings > Developer Settings > Personal Access Tokens > Fine-grained tokens**. Nenhum scope e necessario.
 
-### Estrutura do projeto
+## Estrutura do projeto
 
 ```
 src/
@@ -75,8 +77,6 @@ src/
   i18n/               # Mensagens PT/EN, routing, config
   lib/                # Constantes, Result type
 ```
-
----
 
 ## Licenca
 

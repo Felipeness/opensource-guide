@@ -1,22 +1,24 @@
 <div align="center">
 
-[![pt-br](https://img.shields.io/badge/lang-Portugu%C3%AAs-green)](README.md)
+🇺🇸 **English**&nbsp;&nbsp;|&nbsp;&nbsp;<a href="README.md">🇧🇷 Portugues</a>
+
+<br />
 
 # Open Source Guide
 
-**Find good first issues in real GitHub projects.**
+Find good first issues in real GitHub projects.
 
-[**Live demo**](https://felipeness.github.io/opensource-guide/)
+[**Live demo →**](https://felipeness.github.io/opensource-guide/)
 
 </div>
 
----
+<br />
 
-### What is it?
+## What is it?
 
 A web tool to find issues labeled "good first issue" on GitHub. Filter by language, label, popularity, organization and more — all in real time using the GitHub Search API.
 
-### Features
+## Features
 
 - **Advanced filters** — language, labels (beginner/intermediate/advanced), stars, date, organization, repository
 - **Organization shortcuts** — Microsoft, Meta, Google, Vercel, Apache, Mozilla and more with one click
@@ -26,7 +28,7 @@ A web tool to find issues labeled "good first issue" on GitHub. Filter by langua
 - **Bilingual** — interface in Portuguese and English
 - **Visible rate limit** — track API usage in real time
 
-### Stack
+## Stack
 
 | Technology | Purpose |
 |---|---|
@@ -37,7 +39,7 @@ A web tool to find issues labeled "good first issue" on GitHub. Filter by langua
 | [nuqs](https://nuqs.47ng.com) | Filter state synced with URL |
 | [Zod](https://zod.dev) | API response validation |
 
-### Running locally
+## Running locally
 
 ```bash
 git clone https://github.com/Felipeness/opensource-guide.git
@@ -48,7 +50,7 @@ npm run dev
 
 Open `http://localhost:3000`.
 
-### Increasing the rate limit
+## Increasing the rate limit
 
 Without authentication the GitHub Search API allows 10 searches/min. To increase to 30/min, create a token and configure:
 
@@ -59,7 +61,7 @@ GITHUB_TOKEN=ghp_your_token_here
 
 Generate the token at **GitHub > Settings > Developer Settings > Personal Access Tokens > Fine-grained tokens**. No scopes required.
 
-### Project structure
+## Project structure
 
 ```
 src/
@@ -75,8 +77,6 @@ src/
   i18n/               # PT/EN messages, routing, config
   lib/                # Constants, Result type
 ```
-
----
 
 ## License
 
