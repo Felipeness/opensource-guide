@@ -1,3 +1,6 @@
+const API_BASE =
+  process.env.NEXT_PUBLIC_API_URL ?? "https://api.github.com/search/issues";
+
 type ApiUrlParams = {
   readonly query: string;
   readonly sort: string;
@@ -14,5 +17,5 @@ export function buildApiUrl({ query, sort, perPage, page }: ApiUrlParams): strin
     page: String(page),
   });
 
-  return `/api/search?${params.toString()}`;
+  return `${API_BASE}?${params.toString()}`;
 }

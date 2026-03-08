@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import { setRequestLocale } from "next-intl/server";
 import { Hero } from "@/components/hero";
 import { LangToggle } from "@/components/lang-toggle";
 import { Footer } from "@/components/footer";
@@ -6,7 +7,14 @@ import { ResourcesSection } from "@/features/resources/components/resources-sect
 import { TipsSection } from "@/features/tips/components/tips-section";
 import { FiltersPanel } from "@/features/search/components/filters-panel";
 
-export default function HomePage() {
+type Props = {
+  params: Promise<{ locale: string }>;
+};
+
+export default async function HomePage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <>
       <Hero langToggle={<LangToggle />} />
