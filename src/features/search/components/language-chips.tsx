@@ -22,7 +22,7 @@ export function LanguageChips({ active, onChange }: LanguageChipsProps) {
           <Chip
             key={lang.value}
             active={active === lang.value}
-            onClick={() => onChange(lang.value)}
+            onClick={() => onChange(active === lang.value ? "" : lang.value)}
           >
             {lang.value === "" ? t("allLangs") : lang.label}
           </Chip>

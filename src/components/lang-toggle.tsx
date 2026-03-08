@@ -11,7 +11,8 @@ export function LangToggle() {
   const nextLocale = locale === "pt" ? "en" : "pt";
 
   function handleToggle() {
-    router.replace(pathname, { locale: nextLocale });
+    const search = typeof window !== "undefined" ? window.location.search : "";
+    router.replace(pathname + search, { locale: nextLocale });
   }
 
   return (
