@@ -24,7 +24,7 @@ export function buildSearchQuery(filters: QueryFilters): string {
 
   const query = filters.query.trim();
   if (query) {
-    parts.push(query);
+    parts.push(`${query} in:title,body`);
   }
 
   if (filters.noAssignee) {
